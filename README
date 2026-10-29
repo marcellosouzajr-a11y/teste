@@ -1,0 +1,1433 @@
+Você atuará como Arquiteto de Software Sênior, Product Manager Técnico, UX Designer e Desenvolvedor Full Stack.
+
+Sua missão é projetar e implementar uma aplicação web corporativa para a equipe de Grandes Contas do SENAI-SP, destinada à gestão completa do ciclo de atendimento às indústrias.
+
+NOME PROVISÓRIO DA APLICAÇÃO
+NGC 360 – Gestão de Grandes Contas e Projetos Industriais
+
+OBJETIVO DO PRODUTO
+
+Digitalizar e integrar em uma única aplicação os processos de:
+
+1. prospecção e entrada de demandas;
+2. qualificação de oportunidades;
+3. gestão de contas e grupos empresariais;
+4. construção de propostas e projetos;
+5. gestão de contratos e termos aditivos;
+6. passagem de bastão da equipe comercial para operações;
+7. planejamento e mobilização das unidades executoras;
+8. gestão das turmas e demais entregas;
+9. acompanhamento físico e financeiro;
+10. geração e aprovação de boletins de medição;
+11. faturamento e acompanhamento de recebimentos;
+12. consolidação de indicadores e resultados;
+13. sustentação do relacionamento após a entrega.
+
+A aplicação deve proporcionar rastreabilidade ponta a ponta, reduzindo planilhas paralelas, retrabalho, digitação duplicada, divergência de informações e dependência de controles individuais.
+
+CONTEXTO DO PROCESSO
+
+A jornada principal será:
+
+ENTRADAS COMERCIAIS
+→ RELACIONAMENTO
+→ PASSAGEM DE BASTÃO
+→ OPERAÇÕES E PROJETOS
+→ ENTREGA E SUSTENTAÇÃO
+
+Etapas do processo:
+
+1. Entradas Comerciais
+   - empresas captadas;
+   - direcionamento da gestão;
+   - busca ativa;
+   - demandas vindas da base nacional;
+   - vendas originadas em outros Departamentos Regionais ou no Departamento Nacional;
+   - demandas operacionais;
+   - suporte à venda, exceções e validações.
+
+2. Relacionamento
+   - qualificação da demanda;
+   - diagnóstico;
+   - construção da proposta;
+   - negociação;
+   - fechamento ou encerramento da oportunidade.
+
+3. Passagem de Bastão
+   - validação do escopo;
+   - compromissos assumidos;
+   - cronograma;
+   - riscos;
+   - responsabilidades;
+   - documentos;
+   - condições comerciais;
+   - aceite formal das áreas envolvidas.
+
+4. Operações e Projetos
+   - planejamento;
+   - mobilização;
+   - gestão das unidades executoras;
+   - acompanhamento da execução;
+   - tratamento de desvios;
+   - atualizações de resultados;
+   - sustentação operacional.
+
+5. Entrega e Sustentação
+   - projeto em execução ou concluído;
+   - operação sustentada;
+   - faturamento;
+   - comprovação das entregas;
+   - resultados;
+   - apoio às unidades;
+   - continuidade do relacionamento.
+
+PREMISSAS DE DESENVOLVIMENTO
+
+1. Desenvolver uma aplicação web responsiva.
+2. Utilizar interface em português do Brasil.
+3. Utilizar o formato monetário brasileiro: R$ 0.000,00.
+4. Utilizar datas no formato DD/MM/AAAA.
+5. Aplicar máscaras de CNPJ, CPF, CEP, moeda e percentuais.
+6. Normalizar dados textuais importantes em letras maiúsculas quando aplicável.
+7. Evitar campos abertos quando houver possibilidade de lista controlada.
+8. Permitir histórico, auditoria e rastreabilidade.
+9. Separar os dados por entidades relacionais, evitando uma única tabela gigante.
+10. Preparar a arquitetura para futura integração com CRM, SAP, SGSET, Microsoft 365, Power BI e bases de unidades executoras.
+11. Nesta primeira versão, utilizar conectores simulados e dados fictícios.
+12. Não utilizar dados pessoais ou empresariais reais.
+13. Toda regra de negócio deve ser implementada no backend e não apenas na interface.
+14. Todas as operações sensíveis devem verificar permissões no backend.
+15. Documentar decisões técnicas, tabelas, APIs, regras e cálculos.
+
+STACK TECNOLÓGICA RECOMENDADA
+
+Implementar preferencialmente como monorepo:
+
+Frontend:
+- Next.js;
+- React;
+- TypeScript;
+- Tailwind CSS;
+- shadcn/ui;
+- React Hook Form;
+- Zod;
+- TanStack Query;
+- TanStack Table;
+- Recharts.
+
+Backend:
+- API Routes do Next.js ou NestJS;
+- TypeScript;
+- Prisma ORM;
+- PostgreSQL.
+
+Autenticação:
+- Microsoft Entra ID em produção;
+- modo de autenticação local fictícia para desenvolvimento;
+- RBAC baseado em papéis.
+
+Qualidade:
+- ESLint;
+- Prettier;
+- testes unitários com Vitest ou Jest;
+- testes de interface com Playwright;
+- migrations do banco de dados;
+- seed de dados fictícios;
+- Docker Compose para execução local.
+
+Se algum componente da stack não estiver disponível, utilizar alternativa equivalente e registrar a decisão no README.
+
+ARQUITETURA FUNCIONAL
+
+Criar os seguintes módulos:
+
+1. Dashboard Executivo
+2. Contas e Empresas
+3. Oportunidades
+4. Atividades e Relacionamento
+5. Propostas
+6. Contratos
+7. Passagem de Bastão
+8. Termos Aditivos
+9. Produtos e Linhas de Serviço
+10. Tabela de Valores e Reajustes
+11. Unidades Executoras
+12. Gestão do Atendimento
+13. Turmas e Entregas
+14. Boletins de Medição
+15. Faturamento e Recebimentos
+16. Riscos e Pendências
+17. Documentos
+18. Relatórios
+19. Administração e Parametrização
+20. Auditoria
+
+PERFIS DE ACESSO
+
+Implementar os seguintes papéis:
+
+ADMINISTRADOR
+- acesso integral;
+- gestão de usuários;
+- parametrização de listas;
+- configuração de integrações;
+- consulta de auditoria.
+
+GESTOR DE GRANDES CONTAS
+- visão consolidada de todas as contas;
+- aprovação da passagem de bastão;
+- acompanhamento de oportunidades, projetos, contratos e resultados;
+- redistribuição de responsáveis;
+- acesso aos dashboards gerenciais.
+
+AGENTE DE RELACIONAMENTO
+- gestão de contas;
+- oportunidades;
+- atividades;
+- diagnóstico;
+- propostas;
+- negociação;
+- passagem de bastão.
+
+AGENTE DE OPERAÇÕES
+- estruturação operacional;
+- unidades executoras;
+- turmas;
+- entregas;
+- riscos;
+- medição;
+- sustentação.
+
+UNIDADE EXECUTORA
+- acesso apenas às atribuições da própria unidade;
+- confirmação de datas;
+- atualização de turmas;
+- alunos;
+- carga horária;
+- evidências;
+- ocorrências e conclusão.
+
+FINANCEIRO
+- boletins de medição;
+- pedidos de compra;
+- notas fiscais;
+- ordens de venda;
+- documentos contábeis;
+- recebimentos;
+- compensações.
+
+CONSULTA EXECUTIVA
+- acesso somente leitura aos dashboards e relatórios autorizados.
+
+MÓDULO 1 – DASHBOARD EXECUTIVO
+
+Criar dashboard com filtros por:
+
+- período;
+- empresa;
+- grupo empresarial;
+- gestor;
+- agente;
+- origem;
+- segmento industrial;
+- estado;
+- município;
+- contrato;
+- projeto;
+- linha de serviço;
+- unidade executora;
+- status;
+- categoria educacional ou tecnológica.
+
+Exibir, no mínimo:
+
+1. valor potencial das oportunidades;
+2. valor ponderado das oportunidades;
+3. valor de propostas emitidas;
+4. valor contratado;
+5. valor previsto;
+6. valor executado;
+7. valor medido;
+8. valor faturado;
+9. valor recebido;
+10. saldo contratual;
+11. quantidade de contas ativas;
+12. quantidade de oportunidades;
+13. quantidade de contratos ativos;
+14. quantidade de projetos;
+15. quantidade de turmas programadas;
+16. quantidade de turmas concluídas;
+17. alunos programados;
+18. alunos matriculados;
+19. alunos concluintes;
+20. carga horária realizada;
+21. boletins pendentes de validação;
+22. notas fiscais vencidas;
+23. riscos críticos;
+24. contratos próximos do reajuste ou término;
+25. distribuição dos resultados por linha de serviço;
+26. distribuição dos resultados por unidade executora;
+27. taxa de conversão de oportunidades;
+28. tempo médio por etapa;
+29. comparação entre previsto e realizado;
+30. evolução mensal dos principais indicadores.
+
+Criar três visões:
+
+- Visão Executiva;
+- Visão Comercial;
+- Visão Operacional e Financeira.
+
+Não inventar metas. Criar funcionalidade para que administradores cadastrem metas anuais e mensais.
+
+MÓDULO 2 – CONTAS E EMPRESAS
+
+Criar estrutura hierárquica:
+
+GRUPO EMPRESARIAL
+→ MARCAS
+→ EMPRESAS
+→ ESTABELECIMENTOS/CNPJs
+→ PLANTAS ATENDIDAS
+
+Campos principais:
+
+- ID interno;
+- CNPJ;
+- razão social;
+- nome fantasia;
+- grupo empresarial;
+- marca;
+- tipo de estabelecimento: matriz ou filial;
+- atividade industrial;
+- CNAE;
+- endereço completo;
+- CEP;
+- município;
+- estado;
+- região;
+- porte;
+- site;
+- origem do cadastro;
+- ID externo do CRM;
+- status da conta;
+- gestor da conta;
+- agente responsável;
+- observações.
+
+Regras:
+
+- validar dígitos do CNPJ;
+- impedir duplicidade de CNPJ;
+- permitir vários CNPJs por grupo;
+- permitir vários CNPJs vinculados a um contrato;
+- permitir vários CNPJs signatários quando necessário;
+- permitir upload de logotipo da marca;
+- armazenar origem e data da última sincronização;
+- criar tela Conta 360 com visão de oportunidades, contratos, atividades, projetos, turmas, boletins, faturamento, documentos, riscos e resultados.
+
+MÓDULO 3 – OPORTUNIDADES
+
+Implementar pipeline Kanban e visão em lista.
+
+Etapas sugeridas:
+
+- captada;
+- em qualificação;
+- diagnóstico;
+- solução em construção;
+- proposta em elaboração;
+- proposta enviada;
+- negociação;
+- ganha;
+- perdida;
+- suspensa;
+- encerrada.
+
+Campos:
+
+- ID da oportunidade;
+- ID da oportunidade no CRM;
+- conta;
+- CNPJ ou plantas envolvidas;
+- título;
+- necessidade da empresa;
+- origem;
+- segmento;
+- agente responsável;
+- apoiadores;
+- data de entrada;
+- previsão de fechamento;
+- valor estimado;
+- probabilidade;
+- valor ponderado;
+- linhas de serviço;
+- unidades potencialmente executoras;
+- concorrentes;
+- próximos passos;
+- data da próxima ação;
+- riscos;
+- motivo de perda;
+- observações.
+
+Regras:
+
+- calcular valor ponderado = valor estimado × probabilidade;
+- exigir motivo em oportunidades perdidas;
+- registrar histórico de mudança de etapa;
+- alertar oportunidade sem atividade futura;
+- permitir converter oportunidade ganha em proposta, contrato ou projeto;
+- não apagar oportunidades com histórico; utilizar encerramento lógico.
+
+MÓDULO 4 – ATIVIDADES E RELACIONAMENTO
+
+Permitir registrar:
+
+- reunião;
+- ligação;
+- visita;
+- e-mail;
+- workshop;
+- apresentação;
+- diagnóstico;
+- follow-up;
+- compromisso;
+- tarefa;
+- decisão;
+- contato com unidade executora.
+
+Campos:
+
+- conta;
+- oportunidade;
+- contrato ou projeto;
+- responsável;
+- participantes;
+- tipo;
+- data;
+- descrição;
+- resultado;
+- próxima ação;
+- prazo;
+- status;
+- anexos.
+
+Criar:
+
+- agenda;
+- lista de tarefas;
+- alertas de atrasos;
+- histórico cronológico por conta;
+- visão “minhas atividades”;
+- visão “atividades da equipe”;
+- opção de sincronização futura com Outlook e Microsoft Teams.
+
+MÓDULO 5 – PROPOSTAS
+
+Campos:
+
+- número da proposta;
+- oportunidade;
+- conta;
+- CNPJ contratante;
+- escopo;
+- produtos;
+- linhas de serviço;
+- quantidades;
+- carga horária;
+- modelo de precificação;
+- valor unitário;
+- valor total;
+- impostos, se aplicável;
+- taxa de coordenação;
+- condições de pagamento;
+- prazo de validade;
+- unidades executoras;
+- status;
+- versão;
+- documentos.
+
+Status:
+
+- rascunho;
+- em validação;
+- aprovada internamente;
+- enviada;
+- em negociação;
+- aceita;
+- recusada;
+- expirada;
+- substituída.
+
+Registrar todas as versões e alterações de valor.
+
+MÓDULO 6 – CONTRATOS
+
+Campos:
+
+- contrato ID;
+- tipo do contrato: estadual ou nacional;
+- contrato sob demanda: sim ou não;
+- valor previsto;
+- cronograma anual previsto;
+- escopo;
+- data de início da vigência;
+- data de término;
+- data de aniversário;
+- status;
+- gestor do contrato;
+- agente responsável;
+- origem do contrato;
+- CNPJs signatários contratantes;
+- grupo de CNPJs envolvidos;
+- marcas envolvidas;
+- entidade contratada;
+- número ou código STD de aprovação;
+- nome do projeto;
+- taxa de coordenação;
+- unidades executoras;
+- Departamentos Regionais envolvidos;
+- linhas de serviço;
+- produtos;
+- condições de pagamento;
+- observações;
+- documentos anexos.
+
+Regras:
+
+1. O identificador do contrato deve ser sequencial e gerado automaticamente.
+2. O status do contrato deve ser calculado com base na vigência, mas permitir exceção autorizada.
+3. O contrato pode envolver vários CNPJs.
+4. O contrato pode possuir várias linhas de serviço.
+5. Cada linha de serviço deve possuir valor e modelo de precificação próprios.
+6. O sistema deve suportar vários projetos para a mesma empresa.
+7. O nome padronizado do atendimento deve seguir:
+   NGC-[NOME DA EMPRESA]-[NOME DO PROJETO]
+8. Gerar alertas de 90, 60 e 30 dias antes do aniversário, reajuste ou encerramento do contrato.
+9. Não permitir lançamento de atendimento fora da vigência, salvo mediante justificativa e permissão.
+10. Exibir consumo financeiro e saldo do contrato.
+11. Controlar percentual de execução física e financeira.
+
+MÓDULO 7 – PASSAGEM DE BASTÃO
+
+Criar workflow formal entre Relacionamento e Operações.
+
+Checklist obrigatório:
+
+- oportunidade ganha;
+- proposta aceita;
+- contrato ou autorização identificada;
+- escopo validado;
+- produtos e entregas definidos;
+- CNPJs envolvidos;
+- unidades executoras definidas;
+- cronograma;
+- premissas;
+- responsabilidades;
+- riscos;
+- condições de pagamento;
+- critérios de aceite;
+- documentos anexados;
+- contatos da empresa;
+- contatos internos;
+- próximos marcos.
+
+Status:
+
+- em preparação;
+- enviada para operações;
+- devolvida para complementação;
+- aceita por operações;
+- concluída.
+
+Exigir aceite eletrônico do responsável comercial e do responsável operacional.
+
+Registrar:
+
+- data e hora;
+- usuário;
+- comentários;
+- pendências;
+- versão do escopo;
+- documentos existentes no momento do aceite.
+
+MÓDULO 8 – TERMOS ADITIVOS
+
+Campos:
+
+- contrato;
+- ano;
+- número do aditivo;
+- STD de aprovação;
+- data de efetivação;
+- nova data de término;
+- escopo;
+- justificativa;
+- documentos.
+
+Tipos de alteração:
+
+- reajuste de valor;
+- alteração de prazo;
+- inclusão de produto ou linha de serviço;
+- inclusão de unidade executora;
+- alteração de quantidade;
+- alteração de condições comerciais;
+- outras situações.
+
+Regras:
+
+- mostrar campos condicionais de acordo com o tipo selecionado;
+- manter o histórico anterior;
+- não sobrescrever dados históricos do contrato;
+- gerar nova versão dos parâmetros alterados;
+- recalcular valores e vigências futuras;
+- exigir descrição quando for selecionada “outras situações”.
+
+MÓDULO 9 – PRODUTOS E LINHAS DE SERVIÇO
+
+Linhas iniciais:
+
+- Aprendizagem Industrial;
+- Curso Técnico;
+- Formação Inicial e Continuada;
+- Ensino Superior;
+- Pós-Graduação;
+- Consultoria de Extensionismo;
+- Serviços Educacionais;
+- Consultoria Educacional;
+- Serviços Tecnológicos;
+- Ensaios Laboratoriais;
+- Pesquisa, Desenvolvimento e Inovação.
+
+Permitir parametrização pelo administrador.
+
+Campos do produto:
+
+- linha de serviço;
+- categoria: educacional ou tecnológica;
+- nome;
+- descrição;
+- carga horária;
+- unidade de medida;
+- modelo de precificação;
+- valor unitário;
+- valor total;
+- status;
+- vigência;
+- documentos.
+
+Modelos de precificação:
+
+- hora-aula;
+- aluno-hora-aula;
+- homem-hora;
+- turma;
+- aluno;
+- serviço;
+- ensaio;
+- projeto;
+- pacote;
+- valor fixo.
+
+MÓDULO 10 – TABELA DE VALORES E REAJUSTES
+
+Campos:
+
+- contrato;
+- linha de serviço;
+- produto;
+- modelo de precificação;
+- valor base;
+- período inicial;
+- período final;
+- índice de reajuste;
+- percentual de reajuste;
+- valor atualizado;
+- ano;
+- possui termo aditivo;
+- justificativa;
+- usuário responsável.
+
+Cálculo:
+
+valor_atualizado = valor_base × (1 + percentual_reajuste / 100)
+
+Regras:
+
+- impedir sobreposição de períodos para a mesma combinação de contrato, produto e modelo de precificação;
+- preservar histórico;
+- aplicar o valor válido na data efetiva da execução;
+- permitir edição apenas para perfis autorizados;
+- registrar cálculo, valor anterior, valor novo, usuário, data e motivo.
+
+MÓDULO 11 – UNIDADES EXECUTORAS
+
+Campos:
+
+- ID;
+- nome da unidade;
+- CNPJ;
+- código CFP/DR;
+- código DN;
+- município;
+- estado;
+- endereço;
+- responsável;
+- e-mail;
+- linhas de serviço disponíveis;
+- capacidade;
+- status;
+- dados de faturamento;
+- observações.
+
+Criar matriz de unidades executoras de todos os Departamentos Regionais envolvidos.
+
+Permitir:
+
+- vincular várias unidades ao contrato;
+- definir unidade principal;
+- definir unidade de referência;
+- definir unidade que receberá o recurso;
+- definir CNPJ emissor da nota fiscal;
+- consultar projetos e turmas atribuídos à unidade.
+
+MÓDULO 12 – GESTÃO DO ATENDIMENTO E TURMAS
+
+O registro de atendimento deve estar vinculado a:
+
+- conta;
+- contrato;
+- oportunidade;
+- proposta;
+- projeto;
+- linha de serviço;
+- produto;
+- unidade executora.
+
+Campos:
+
+- contrato ID;
+- número da proposta;
+- CNPJ da planta local;
+- unidade executora;
+- município da unidade;
+- código sequencial da turma informado pela empresa;
+- código interno da turma;
+- nome do curso ou entrega;
+- carga horária;
+- alunos programados;
+- alunos matriculados;
+- alunos concluintes;
+- início previsto;
+- término previsto;
+- início efetivo;
+- término efetivo;
+- município do atendimento;
+- status;
+- ID da oportunidade no CRM;
+- CNPJ de faturamento da empresa;
+- CNPJ de faturamento do SENAI;
+- linha de serviço;
+- modelo de precificação;
+- valor hora-aula;
+- valor aluno-hora-aula;
+- valor da empresa;
+- taxa de coordenação;
+- valor da coordenação;
+- valor do DR executor;
+- ordem de venda;
+- documento contábil;
+- documento contábil renegociado;
+- condição de pagamento;
+- motivo de cancelamento;
+- data de cancelamento;
+- observações;
+- evidências da execução.
+
+Status:
+
+- programada;
+- confirmada;
+- em andamento;
+- concluída;
+- cancelada;
+- no show.
+
+Regras de status:
+
+PROGRAMADA:
+- datas previstas preenchidas;
+- datas efetivas ainda não confirmadas.
+
+CONFIRMADA:
+- início e término efetivos confirmados pela unidade.
+
+EM ANDAMENTO:
+- data atual igual ou posterior ao início efetivo;
+- data atual igual ou anterior ao término efetivo.
+
+CONCLUÍDA:
+- término efetivo ocorrido;
+- dados obrigatórios de conclusão preenchidos.
+
+CANCELADA:
+- alteração manual;
+- exige motivo, data e observação;
+- não pode ser incluída em novo boletim.
+
+NO SHOW:
+- alteração manual;
+- alunos matriculados igual a zero;
+- exige justificativa.
+
+Não cancelar automaticamente uma turma apenas porque a data prevista passou. Gerar pendência para validação humana.
+
+CÁLCULOS DAS TURMAS
+
+Se valor_hora_aula > 0:
+
+valor_empresa = valor_hora_aula × carga_horaria
+
+Caso contrário, se valor_aluno_hora_aula > 0:
+
+valor_empresa =
+valor_aluno_hora_aula × carga_horaria × alunos_matriculados
+
+Cálculo da coordenação:
+
+valor_coordenacao =
+valor_empresa × percentual_taxa_coordenacao / 100
+
+Cálculo do DR executor:
+
+valor_dr_executor =
+valor_empresa - valor_coordenacao
+
+Todos os cálculos devem:
+
+- utilizar decimal, nunca ponto flutuante binário;
+- armazenar memória de cálculo;
+- permitir rastrear a tabela de valor utilizada;
+- registrar eventual ajuste manual;
+- exigir justificativa para ajuste manual;
+- manter valor original e valor ajustado.
+
+MÓDULO 13 – BOLETIM DE MEDIÇÃO
+
+Implementar geração automatizada de boletim.
+
+Fluxo:
+
+1. usuário seleciona contrato ou projeto;
+2. usuário seleciona empresa;
+3. usuário informa período inicial e final;
+4. sistema consulta turmas elegíveis;
+5. sistema pré-seleciona as turmas;
+6. usuário confere e remove itens indevidos;
+7. sistema calcula totais;
+8. boletim é gerado como rascunho;
+9. boletim segue para validação interna;
+10. boletim é enviado para aprovação da empresa;
+11. boletim fica em espera até o recebimento do pedido de compra;
+12. após aprovação, é liberado para faturamento.
+
+Somente turmas elegíveis poderão entrar no boletim.
+
+Critérios iniciais de elegibilidade:
+
+- contrato correto;
+- período correto;
+- turma concluída ou aceita conforme regra parametrizada;
+- turma ainda não incluída em boletim aprovado;
+- informações mínimas preenchidas;
+- valor calculado;
+- evidências disponíveis;
+- ausência de bloqueio financeiro ou operacional.
+
+Status:
+
+- rascunho;
+- em validação interna;
+- devolvido;
+- aguardando aprovação da empresa;
+- aprovado pela empresa;
+- aguardando pedido de compra;
+- liberado para faturamento;
+- faturado;
+- cancelado.
+
+Campos:
+
+- número do boletim;
+- contrato;
+- projeto;
+- empresa;
+- período da medição;
+- turmas;
+- pedido de compra;
+- valor total;
+- carga horária total;
+- alunos programados;
+- alunos matriculados;
+- alunos concluintes;
+- quantidade de turmas;
+- observações;
+- aprovadores;
+- datas de aprovação;
+- documentos.
+
+Permitir identificação de parcela ou medição:
+
+- 1 de 3;
+- 2 de 3;
+- 3 de 3.
+
+Gerar versão para visualização, impressão e PDF.
+
+O relatório do boletim deve apresentar:
+
+- empresa;
+- contrato;
+- projeto;
+- período;
+- lista de turmas;
+- plantas atendidas;
+- unidades executoras;
+- municípios;
+- cursos;
+- cargas horárias;
+- alunos;
+- datas efetivas;
+- valores unitários;
+- valores totais;
+- total do boletim;
+- campo de aceite;
+- histórico de aprovação.
+
+MÓDULO 14 – FATURAMENTO E RECEBIMENTOS
+
+O módulo deve ser alimentado pelos boletins liberados.
+
+Campos:
+
+- boletim;
+- pedido de compra;
+- CNPJ de faturamento da empresa;
+- CNPJ emissor do SENAI;
+- ordem de venda;
+- documento contábil;
+- documento contábil renegociado;
+- nota fiscal;
+- data de emissão;
+- parcela;
+- quantidade de parcelas;
+- valor;
+- data de vencimento;
+- data de pagamento;
+- data de compensação;
+- status;
+- observações.
+
+Condições de pagamento iniciais:
+
+- à vista;
+- 30 DDL;
+- 60 DDL;
+- 90 DDL;
+- 30/60/90 DDL;
+- condição personalizada.
+
+Regras:
+
+- permitir vários CNPJs de faturamento por contrato;
+- permitir distribuição do valor entre CNPJs;
+- validar se a soma das parcelas corresponde ao valor faturado;
+- calcular datas de vencimento com base na emissão e condição;
+- destacar valores vencidos;
+- impedir faturamento duplicado;
+- permitir faturamento parcial;
+- manter conciliação entre medido, faturado, recebido e compensado.
+
+MÓDULO 15 – RISCOS, PENDÊNCIAS E ALERTAS
+
+Criar cadastro de risco com:
+
+- categoria;
+- descrição;
+- causa;
+- consequência;
+- probabilidade;
+- impacto;
+- nível;
+- responsável;
+- plano de resposta;
+- prazo;
+- status.
+
+Classificação:
+
+- baixo;
+- médio;
+- alto;
+- crítico.
+
+Gerar alertas para:
+
+- oportunidade parada;
+- atividade vencida;
+- proposta próxima do vencimento;
+- contrato próximo do reajuste;
+- contrato próximo do término;
+- passagem de bastão incompleta;
+- turma sem confirmação;
+- turma com data ultrapassada;
+- turma concluída sem evidências;
+- boletim aguardando aprovação;
+- boletim sem pedido de compra;
+- nota fiscal vencida;
+- recebimento não compensado;
+- saldo contratual próximo do limite;
+- divergência entre valor previsto, medido e faturado.
+
+MÓDULO 16 – DOCUMENTOS
+
+Permitir anexar e classificar:
+
+- contrato;
+- proposta;
+- termo aditivo;
+- autorização;
+- pedido de compra;
+- boletim;
+- nota fiscal;
+- lista de presença;
+- certificado;
+- evidência de execução;
+- ata;
+- relatório;
+- comprovante;
+- outros.
+
+Campos:
+
+- nome;
+- tipo;
+- entidade relacionada;
+- versão;
+- data;
+- autor;
+- confidencialidade;
+- validade;
+- status.
+
+Preparar integração futura com SharePoint.
+
+MÓDULO 17 – RELATÓRIOS
+
+Criar relatórios filtráveis e exportáveis para XLSX, CSV e PDF:
+
+1. carteira de contas;
+2. pipeline de oportunidades;
+3. oportunidades por responsável;
+4. conversão por etapa;
+5. contratos vigentes;
+6. contratos próximos de reajuste;
+7. contratos próximos do encerramento;
+8. consumo contratual;
+9. projetos por empresa;
+10. projetos por unidade executora;
+11. turmas por status;
+12. alunos programados, matriculados e concluintes;
+13. carga horária prevista e realizada;
+14. previsto versus realizado;
+15. boletins por status;
+16. faturamento por período;
+17. contas a receber;
+18. valores vencidos;
+19. medido versus faturado;
+20. faturado versus recebido;
+21. resultados por linha de serviço;
+22. resultados por estado e município;
+23. resultados por grupo empresarial;
+24. riscos e pendências;
+25. trilha de auditoria.
+
+MÓDULO 18 – AUDITORIA
+
+Criar log imutável contendo:
+
+- usuário;
+- data e hora;
+- ação;
+- entidade;
+- identificador;
+- valor anterior;
+- valor novo;
+- motivo;
+- endereço IP, quando disponível;
+- origem da alteração.
+
+Auditar, no mínimo:
+
+- alteração de valores;
+- mudança de status;
+- cancelamento;
+- aprovação;
+- rejeição;
+- exclusão lógica;
+- alteração de datas;
+- alteração de vínculo contratual;
+- reajuste;
+- geração e alteração de boletim;
+- lançamento financeiro.
+
+MODELO DE DADOS
+
+Criar entidades relacionais separadas:
+
+- User
+- Role
+- Permission
+- AccountGroup
+- Brand
+- Company
+- Establishment
+- Contact
+- Opportunity
+- OpportunityStageHistory
+- Activity
+- Proposal
+- ProposalVersion
+- Contract
+- ContractCompany
+- ContractServiceLine
+- ContractExecutor
+- ContractAnnualForecast
+- Amendment
+- ServiceLine
+- Product
+- PriceTable
+- PriceAdjustment
+- ExecutorUnit
+- Project
+- Handover
+- HandoverChecklistItem
+- Delivery
+- ClassGroup
+- MeasurementBulletin
+- MeasurementItem
+- PurchaseOrder
+- Invoice
+- InvoiceInstallment
+- Payment
+- Risk
+- Issue
+- Document
+- Notification
+- Goal
+- AuditLog
+- IntegrationLog
+
+Definir:
+
+- chaves primárias;
+- chaves estrangeiras;
+- índices;
+- constraints;
+- campos obrigatórios;
+- exclusão lógica;
+- createdAt;
+- updatedAt;
+- createdBy;
+- updatedBy;
+- versionamento otimista quando necessário.
+
+REQUISITOS DE EXPERIÊNCIA DO USUÁRIO
+
+1. Página inicial com cards de pendências e atalhos.
+2. Menu lateral organizado por jornada.
+3. Busca global por:
+   - CNPJ;
+   - razão social;
+   - nome fantasia;
+   - contrato;
+   - projeto;
+   - oportunidade;
+   - proposta;
+   - turma;
+   - boletim;
+   - nota fiscal.
+4. Formulários divididos em etapas.
+5. Salvamento de rascunho.
+6. Validação clara dos campos.
+7. Tabelas com filtros, ordenação, paginação e colunas configuráveis.
+8. Kanban para oportunidades.
+9. Linha do tempo para Conta 360 e Projeto 360.
+10. Indicadores com possibilidade de detalhamento.
+11. Avisos visuais para pendências críticas.
+12. Não depender somente de cores para comunicar status.
+13. Interface acessível conforme WCAG 2.1 AA.
+14. Layout institucional, limpo e sóbrio.
+15. Usar o vermelho como cor de destaque, sem comprometer acessibilidade.
+16. Criar estados de carregamento, vazio, erro e acesso negado.
+
+SEGURANÇA E LGPD
+
+Implementar:
+
+- autenticação;
+- autorização por papéis;
+- menor privilégio;
+- proteção contra acesso indevido entre unidades;
+- validação no frontend e backend;
+- prevenção a SQL injection;
+- prevenção a XSS;
+- proteção CSRF quando aplicável;
+- rate limiting;
+- logs de segurança;
+- sessão segura;
+- proteção de segredos por variáveis de ambiente;
+- criptografia em trânsito;
+- política de retenção configurável;
+- exportação e anonimização quando aplicável;
+- rastreabilidade de acesso a documentos.
+
+Não armazenar senhas em texto puro.
+Não registrar segredos nos logs.
+Não expor dados confidenciais nas respostas da API.
+
+INTEGRAÇÕES FUTURAS
+
+Criar interfaces desacopladas para:
+
+- CRM: empresas, CNPJs e oportunidades;
+- SAP: ordem de venda, documento contábil, nota fiscal, pagamento e compensação;
+- SGSET ou sistema equivalente: condições de pagamento e referências operacionais;
+- Microsoft Entra ID: autenticação e grupos;
+- Outlook: alertas e atividades;
+- Microsoft Teams: notificações;
+- SharePoint: documentos;
+- Power BI: datasets e indicadores.
+
+Criar implementações mock para desenvolvimento.
+
+API
+
+Criar API REST bem documentada ou API equivalente.
+
+Exemplos:
+
+GET /api/accounts
+POST /api/accounts
+GET /api/accounts/:id/overview
+
+GET /api/opportunities
+POST /api/opportunities
+PATCH /api/opportunities/:id/stage
+
+GET /api/contracts
+POST /api/contracts
+GET /api/contracts/:id/consumption
+
+POST /api/handovers
+POST /api/handovers/:id/submit
+POST /api/handovers/:id/accept
+
+GET /api/classes
+POST /api/classes
+PATCH /api/classes/:id/status
+
+POST /api/measurement-bulletins/preview
+POST /api/measurement-bulletins
+POST /api/measurement-bulletins/:id/submit
+POST /api/measurement-bulletins/:id/approve
+
+POST /api/invoices
+GET /api/dashboard/executive
+
+Utilizar DTOs, schemas de validação e respostas de erro padronizadas.
+
+TESTES OBRIGATÓRIOS
+
+Criar testes para:
+
+1. validação de CNPJ;
+2. geração sequencial de contrato;
+3. prevenção de duplicidade;
+4. cálculo de valor hora-aula;
+5. cálculo de aluno-hora-aula;
+6. cálculo de taxa de coordenação;
+7. cálculo do valor do DR executor;
+8. cálculo de reajuste;
+9. seleção do preço válido por período;
+10. cálculo da condição de pagamento;
+11. mudança automática de status;
+12. impedimento de turma duplicada em boletim;
+13. soma dos itens do boletim;
+14. soma das parcelas de faturamento;
+15. permissões por perfil;
+16. auditoria;
+17. passagem de bastão;
+18. cancelamento e no show;
+19. filtros dos dashboards;
+20. exportação de relatórios.
+
+DADOS DE DEMONSTRAÇÃO
+
+Criar seed inteiramente fictício com:
+
+- 5 grupos empresariais;
+- 12 empresas;
+- 25 estabelecimentos;
+- 15 oportunidades;
+- 6 contratos;
+- 4 unidades executoras;
+- 20 produtos;
+- 30 turmas;
+- 5 boletins;
+- 8 notas fiscais;
+- 15 atividades;
+- 10 riscos;
+- metas mensais fictícias.
+
+Identificar claramente os dados como demonstração.
+
+ENTREGÁVEIS
+
+Gerar:
+
+1. aplicação funcional;
+2. código-fonte organizado;
+3. modelo de dados Prisma;
+4. migrations;
+5. seed;
+6. APIs;
+7. telas responsivas;
+8. testes;
+9. Docker Compose;
+10. arquivo .env.example;
+11. README;
+12. documentação da arquitetura;
+13. documentação das regras de negócio;
+14. matriz de permissões;
+15. catálogo de status;
+16. catálogo de campos;
+17. diagrama Mermaid do modelo de dados;
+18. diagrama Mermaid da jornada;
+19. backlog técnico;
+20. lista de integrações pendentes.
+
+ESTRATÉGIA DE IMPLEMENTAÇÃO
+
+Não tente desenvolver todas as funcionalidades sem uma estrutura incremental.
+
+FASE 1 – FUNDAÇÃO
+- criar monorepo;
+- configurar banco;
+- autenticação local simulada;
+- RBAC;
+- layout;
+- auditoria;
+- dados de demonstração;
+- componentes compartilhados.
+
+FASE 2 – MVP COMERCIAL
+- contas;
+- oportunidades;
+- atividades;
+- propostas;
+- contratos;
+- dashboard comercial.
+
+FASE 3 – OPERAÇÃO
+- passagem de bastão;
+- unidades executoras;
+- produtos;
+- valores;
+- gestão do atendimento;
+- turmas;
+- riscos.
+
+FASE 4 – MEDIÇÃO E FINANCEIRO
+- boletins de medição;
+- faturamento;
+- parcelas;
+- recebimentos;
+- dashboards financeiros.
+
+FASE 5 – INTEGRAÇÕES E ROBUSTEZ
+- conectores;
+- notificações;
+- documentos;
+- exportações;
+- testes ponta a ponta;
+- segurança;
+- desempenho.
+
+CRITÉRIOS DE ACEITE DO MVP
+
+O MVP será considerado funcional quando for possível executar integralmente o seguinte cenário:
+
+1. cadastrar ou selecionar uma conta;
+2. abrir uma oportunidade;
+3. registrar atividades;
+4. mover a oportunidade no pipeline;
+5. criar proposta;
+6. marcar a oportunidade como ganha;
+7. criar contrato;
+8. vincular empresas, CNPJs, linhas de serviço e unidades executoras;
+9. realizar a passagem de bastão;
+10. cadastrar uma turma;
+11. atualizar execução e resultados;
+12. calcular automaticamente os valores;
+13. concluir a turma;
+14. gerar um boletim de medição pelo período;
+15. aprovar o boletim;
+16. registrar pedido de compra;
+17. lançar nota fiscal;
+18. registrar pagamento;
+19. visualizar os resultados no dashboard;
+20. consultar a trilha de auditoria.
+
+FORMA DE TRABALHO
+
+Antes de escrever o código:
+
+1. apresente um resumo da arquitetura;
+2. apresente a estrutura de pastas;
+3. apresente o modelo de dados;
+4. apresente as regras de negócio que serão implementadas;
+5. liste premissas e pontos que dependem de integração;
+6. identifique ambiguidades;
+7. adote decisões conservadoras e documentadas;
+8. não bloqueie o desenvolvimento por falta de integração;
+9. utilize mocks e interfaces desacopladas;
+10. implemente a Fase 1 e a Fase 2 antes das demais.
+
+Após cada fase:
+
+- execute lint;
+- execute testes;
+- corrija erros;
+- valide migrations;
+- valide seed;
+- atualize o README;
+- apresente os arquivos criados;
+- registre pendências;
+- não declare uma funcionalidade como concluída sem teste ou demonstração correspondente.
+
+COMECE AGORA
+
+Inicie apresentando:
+
+1. arquitetura proposta;
+2. diagrama Mermaid da jornada;
+3. diagrama Mermaid simplificado do banco;
+4. estrutura de diretórios;
+5. matriz de permissões;
+6. backlog da Fase 1;
+7. backlog da Fase 2;
+8. principais riscos técnicos;
+9. plano de implementação;
+10. em seguida, gere o projeto-base executável.
